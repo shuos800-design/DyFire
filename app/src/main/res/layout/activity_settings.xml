@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔥 DyFire 续火花设置"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FF4500"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="v3.0"
+            android:textSize="12sp"
+            android:textColor="#999"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="每天发送时间（小时，0-23）" android:textSize="14sp" android:textColor="#666"/>
+        <EditText
+            android:id="@+id/etHour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="默认：9（早上9点）"
+            android:inputType="number"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="发送的消息内容" android:textSize="14sp" android:textColor="#666"/>
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="默认：🔥"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保存设置"
+            android:backgroundTint="#FF4500"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#DDDDDD" android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="已记录的好友"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tvFriendCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="共 0 位好友"
+            android:textSize="13sp"
+            android:textColor="#999"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/llFriends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="清空所有好友"
+            android:backgroundTint="#999999"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#DDDDDD" android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnTrigger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔥 立即手动触发一次发送"
+            android:backgroundTint="#FF8C00"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="触发后请打开抖音，模块会在抖音进程内执行发送"
+            android:textSize="12sp"
+            android:textColor="#999"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            android:textColor="#FF4500"/>
+
+    </LinearLayout>
+</ScrollView>
