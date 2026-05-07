@@ -4,6 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,21 +22,31 @@ public class Config {
     private static final String K_LAST_SENT = "last_sent";
     private static final String K_TRIGGER   = "manual_trigger";
 
-    // ── 用 Root Shell 读文件 ──────────────────
+    // 直接用 FileReader 读（抖音进程有 /sdcard 读权限）
     private static String readRaw() {
         try {
-            Process p = Runtime.getRuntime().exec(new String[]{"su", "-c", "cat " + PATH});
-            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            File f = new File(PATH);
+            if (!f.exists()) return "";
+            BufferedReader br = new BufferedReader(new FileReader(f));
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = br.readLine()) != null) sb.append(line);
-            p.waitFor();
+            br.close();
             return sb.toString();
         } catch (Exception e) { return ""; }
     }
 
-    // ── 用 Root Shell 写文件 ──────────────────
+    // 写文件：抖音进程用 FileWriter，设置 App 用 su
     private static void writeRaw(String json) {
+        // 先尝试直接写
+        try {
+            new File(DIR).mkdirs();
+            FileWriter fw = new FileWriter(PATH);
+            fw.write(json);
+            fw.close();
+            return;
+        } catch (Exception ignored) {}
+        // 直接写失败则用 su
         try {
             String escaped = json.replace("'", "'\\''");
             String cmd = "mkdir -p " + DIR + " && printf '%s' '" + escaped + "' > " + PATH + " && chmod 666 " + PATH;
